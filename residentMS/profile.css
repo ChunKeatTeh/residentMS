@@ -1,0 +1,81 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Funnel Sans', sans-serif;
+  overflow-x: hidden;
+  background-color: #F3F3F3;
+}
+
+.profile {
+  margin: 30px auto;
+  padding: 20px;
+  width: 40%;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 4px 4px 13px rgba(203, 203, 203, .5);
+}
+
+.profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px;
+}
+
+.profileInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: left;
+}
+
+.profileActions button {
+  background: #907AD6;
+  color: #F3F3F3;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.profileActions button:hover {
+  background: #4F518C;
+}
+
+.reportButton {
+  font-family: 'Funnel Sans', sans-serif;
+  font-size: 20px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 100px;
+  height: 50px;
+  background-color: #BB4430;
+  color: #F3F3F3;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reportButton > img {
+  width: 20px;
+  height: 20px;
+  color: #F3F3F3;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resident Mental Health Services</title>
+  <link rel="stylesheet" href="mental_Health.css">
+  <link rel="icon" href="./img/Icons/favicon.icon" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <h1>Resident Mental Health Services</h1>
+  </header>
+  <!-- Cool Down Timer Section as overlay -->
+  <div id="timerOverlay" style="position:fixed; top:0; left:0; width:100%; background:rgba(46,74,97,0.95); color:#fff; z-index:1000; text-align:center; padding:32px 0; display:none;">
+    <h3>Take a Cool Down Break</h3>
+    <div id="timerDisplayOverlay" style="font-size:2em;margin:16px 0;">05:00</div>
+    <button id="stopTimerOverlay" style="background:#d9534f;color:#fff;padding:8px 20px;border:none;border-radius:6px;cursor:pointer;">Stop</button>
+  </div>
+  <div style="text-align:center; margin-top:32px;">
+    <button id="startTimer" style="background:#2E4A61;color:#fff;padding:10px 24px;border:none;border-radius:6px;cursor:pointer;">Start 5-Minute Timer</button>
+  </div>
+  <main>
+    <section>
+      <button class="back-btn" onclick="window.location.href='index.html'" style="margin-bottom:20px;">&#8592; Home</button>
+      <h2>Mental Health Support</h2>
+      <p>We care about your well-being. Here are a few tips and resources to help you maintain good mental health.</p>
+      <div class="tips">
+        <div class="tipCard">
+          <img src="./img/Pictures/exercise.jpeg" alt="Exercise">
+          <h3>Exercise Regularly</h3>
+          <p>Physical activity helps reduce stress and boost mood. Even a short walk can make a difference!</p>
+        </div>
+        <div class="tipCard">
+          <img src="./img/Pictures/food.jpg" alt="Healthy Eating">
+          <h3>Eat Healthy</h3>
+          <p>A balanced diet can have a positive impact on your mental state. Explore nearby healthy dining options.</p>
+        </div>
+        <div class="tipCard">
+          <img src="./img/Pictures/talk.webp" alt="Talk to Someone">
+          <h3>Talk to Someone</h3>
+          <p>Don't hesitate to reach out to friends or professionals when feeling overwhelmed. You're not alone.</p>
+        </div>
+      </div>
+      <button onclick="showSupportMessage()">Need Immediate Help?</button>
+      <div id="supportMessage" class="hidden">
+        Please contact our 24/7 mental health support line at <strong>+1-800-123-4567</strong>.
+      </div>
+    </section>
+  </main>
+  <script>
+    function showSupportMessage() {
+      document.getElementById("supportMessage").classList.remove("hidden");
+    }
+
+    // Overlay Cool Down Timer Logic
+    const startBtn = document.getElementById('startTimer');
+    const timerOverlay = document.getElementById('timerOverlay');
+    const timerDisplayOverlay = document.getElementById('timerDisplayOverlay');
+    const stopBtnOverlay = document.getElementById('stopTimerOverlay');
+    let timerInterval;
+    let timeLeft = 300; // 5 minutes in seconds
+
+    function updateTimerDisplayOverlay() {
+      const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+      const seconds = String(timeLeft % 60).padStart(2, '0');
+      timerDisplayOverlay.textContent = `${minutes}:${seconds}`;
+    }
+
+    startBtn.onclick = function() {
+      timeLeft = 300;
+      updateTimerDisplayOverlay();
+      timerOverlay.style.display = 'block';
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplayOverlay();
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          timerDisplayOverlay.textContent = "Time's up!";
+        }
+      }, 1000);
+    };
+
+    stopBtnOverlay.onclick = function() {
+      clearInterval(timerInterval);
+      timerOverlay.style.display = 'none';
+    };
+  </script>
+</body>
+</html>
